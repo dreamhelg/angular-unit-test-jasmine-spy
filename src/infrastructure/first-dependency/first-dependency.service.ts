@@ -4,10 +4,25 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class FirstDependencyService {
-  constructor() { }
+  defaultValue: string;
+
+  get defaultString(): string {
+    return this.defaultValue;
+  }
+
+  constructor(
+  ) { }
 
   returnValue(index: number): string {
     const values = ["one", "two", "three"];
     return values[index];
+  }
+
+  initValue(): void {
+    this.defaultValue = "one";
+  }
+
+  initValue2(text: string): void {
+    alert("something" + text);
   }
 }

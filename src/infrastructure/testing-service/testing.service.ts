@@ -5,11 +5,23 @@ import { FirstDependencyService } from "../first-dependency/first-dependency.ser
   providedIn: "root"
 })
 export class TestingService {
-  constructor(
-    private readonly firstDependencyService: FirstDependencyService
-  ) {}
+  private firstDependencyService: FirstDependencyService;
 
-  getFirstValue(index: number): string {
+  constructor(firstDependencyService: FirstDependencyService) {
+    this.firstDependencyService = firstDependencyService;
+    this.firstDependencyService.initValue();
+    this.firstDependencyService.initValue2("");
+  }
+
+  getValue(index: number): string {
     return this.firstDependencyService.returnValue(index);
+  }
+
+  getIndex(): number {
+    return 2;
+  }
+
+  sayHi(message: string): void {
+    this.firstDependencyService.initValue2(message);
   }
 }
